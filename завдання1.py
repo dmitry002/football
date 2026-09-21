@@ -27,7 +27,10 @@ def delete():
 def show_sorted():
     for name in sorted(teams):
         print(name, teams[name])
-
+             
+def show_by_points():
+    for name in sorted(teams, key=teams.get, reverse=True):
+        print(name, teams[name])
 
 # забута команда
 def task():
@@ -47,7 +50,7 @@ def task():
 
 # меню
 while True:
-    c = input("\n1-показати 2-додати 3-видалити 4-сортувати 5-завдання 0-вихід: ")
+        c = input("\n1-показати 2-додати 3-видалити 4-сортувати 5-завдання 6-по балах 0-вихід: ")
     if c == "1":
         show()
     elif c == "2":
@@ -58,5 +61,7 @@ while True:
         show_sorted()
     elif c == "5":
         task()
+    elif c == "6":
+        show_by_points()
     elif c == "0":
         break
