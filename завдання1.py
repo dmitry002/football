@@ -10,10 +10,18 @@ def show():
 # додавання нової команди
 def add():
     name = input("Назва: ")
+    if name in teams:
+        print("Така команда вже є")
+        return
     try:
-        teams[name] = int(input("Бали: "))
+        points = int(input("Бали: "))
     except ValueError:
         print("Помилка вводу")
+        return
+    if points in teams.values():
+        print("Команда з такими балами вже є")
+        return
+    teams[name] = points
 
 # видалення команди за назвою
 def delete():
