@@ -23,6 +23,7 @@ def add():
         print("Команда з такими балами вже є")
         return
     teams[name] = points
+# коментар: після видалення можна було б виводити повідомлення, що команду видалено
 
 # видалення команди за назвою
 def delete():
@@ -40,6 +41,14 @@ def show_sorted():
 def show_by_points():
     for name in sorted(teams, key=teams.get, reverse=True):
         print(name, teams[name])
+
+def difference(): 
+    a = input("Перша команда: ") 
+    b = input("Друга команда: ") 
+    if a in teams and b in teams: 
+             print("Різниця:", abs(teams[a] - teams[b])) 
+    else: 
+             print("Такої команди немає")
 
 def leader():
     best = max(teams, key=teams.get)
