@@ -41,13 +41,26 @@ def show_by_points():
     for name in sorted(teams, key=teams.get, reverse=True):
         print(name, teams[name])
 
+def leader():
+    best = max(teams, key=teams.get)
+    worst = min(teams, key=teams.get)
+    print("Чемпіон:", best, teams[best])
+    print("Останнє місце:", worst, teams[worst])
+         
 # забута команда
+# коментар від Дар'ї: тут можна було б перевіряти, чи команда не стала чемпіоном і не остання
 def task():
     name = input("Назва забутої команди: ")
     try:
         points = int(input("Її бали: "))
     except ValueError:
         print("Помилка вводу")
+        return
+    if points > max(teams.values()):
+        print("Ця команда не могла стати чемпіоном")
+        return
+    if points < min(teams.values()):
+        print("Ця команда не могла зайняти останнє місце")
         return
     weaker = []
     for n in teams:
